@@ -14,7 +14,7 @@ const App = props => {
     otherState: "Some value"
 
   });
-  const swithNameHandler = () => {
+  const switchNameHandler = () => {
     // DON'T do this: this.state.person[0].name ='Sumith Damodaran';
     setPersonsState({
       persons: [
@@ -28,9 +28,13 @@ const App = props => {
     <div className="App">
       <h1>Hi, I am a React APP</h1>
       <p>This is really working!</p>
-      <button onClick={swithNameHandler}>Switch Name</button>
-      <Person name={personsState.persons[0].name} age={personsState.persons[0].age} />
-      <Person name={personsState.persons[1].name} age={personsState.persons[1].age}>my hobbies : Music</Person>
+      <button onClick={switchNameHandler}>Switch Name</button>
+      <Person 
+      name={personsState.persons[0].name} 
+      age={personsState.persons[0].age} />
+      <Person click={switchNameHandler}
+      name={personsState.persons[1].name} 
+      age={personsState.persons[1].age}>my hobbies : Music</Person>
     </div>
   );
 
