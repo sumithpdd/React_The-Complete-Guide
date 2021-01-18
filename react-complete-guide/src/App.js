@@ -22,8 +22,8 @@ class App extends Component {
         <h1>Hi, I am a React APP</h1>
         <p>This is really working!</p>
         <button>Switch Nme</button>
-        <Person name="Sumith" age="40" />
-        <Person name="Sammy boy" age="42">my hobbies : Music</Person>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>my hobbies : Music</Person>
       </div>
     );
   }
