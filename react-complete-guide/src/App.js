@@ -1,8 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
-import { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+import { Component } from 'react'; 
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 class App extends Component {
@@ -105,7 +104,7 @@ class App extends Component {
       classes.push('bold');
     }
     return (
-      <StyleRoot>
+      
         <div className="App">
           <h1>Hi, I am a React APP</h1>
           <p className={classes.join(' ')}>This is really working!</p>
@@ -119,11 +118,10 @@ class App extends Component {
           <UserOutput userName="Sammy" />
 
           <UserOutput userName="SBoy" />
-        </div>
-      </StyleRoot>
+        </div> 
     );
 
   }
 }
 
-export default Radium(App);
+export default App;
