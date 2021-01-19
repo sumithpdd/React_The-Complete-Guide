@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import Person from './Person/Person';
-import { Component, useState } from 'react';
+import { Component } from 'react';
+import Radium, { StyleRoot } from 'radium';
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
 class App extends Component {
@@ -67,7 +68,11 @@ class App extends Component {
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer'
+      cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'black'
+      }
     };
     let persons = null;
     if (this.state.showPersons) {
@@ -87,6 +92,10 @@ class App extends Component {
         </div>
       );
       style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
     }
     let classes = []; //['red','bold'].join(' ')
     if (this.state.persons.length <= 2) {
@@ -96,23 +105,25 @@ class App extends Component {
       classes.push('bold');
     }
     return (
-      <div className="App">
-        <h1>Hi, I am a React APP</h1>
-        <p className={classes.join(' ')}>This is really working!</p>
-        <button style={style}
-          onClick={this.togglePersonsHandler}>Toggle Persons</button>
-        {persons}
-        <hr />
-        <UserInput changed={this.userNameChangedHandler} value={this.state.userName} />
-        <UserOutput userName={this.state.userName} />
+      <StyleRoot>
+        <div className="App">
+          <h1>Hi, I am a React APP</h1>
+          <p className={classes.join(' ')}>This is really working!</p>
+          <button style={style}
+            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          {persons}
+          <hr />
+          <UserInput changed={this.userNameChangedHandler} value={this.state.userName} />
+          <UserOutput userName={this.state.userName} />
 
-        <UserOutput userName="Sammy" />
+          <UserOutput userName="Sammy" />
 
-        <UserOutput userName="SBoy" />
-      </div>
+          <UserOutput userName="SBoy" />
+        </div>
+      </StyleRoot>
     );
 
   }
 }
 
-export default App;
+export default Radium(App);
