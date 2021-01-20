@@ -4,6 +4,21 @@ import Person from './Person/Person';
 import { Component } from 'react'; 
 import UserInput from './UserInput/UserInput';
 import UserOutput from './UserOutput/UserOutput';
+
+import styled from 'styled-components';
+const StyledButton = styled.button` 
+    background-color:${props =>props.alt? 'red': 'green'};
+    color: white;
+    font: inherit;
+    border: 1px solid blue;
+    padding: 8px;
+    cursor: pointer;
+    
+    &:hover {
+      background-color: ${props =>props.alt? 'salmon': 'lightgreen'};
+      color: black;
+    }
+`;
 class App extends Component {
 
   state = {
@@ -108,8 +123,8 @@ class App extends Component {
         <div className="App">
           <h1>Hi, I am a React APP</h1>
           <p className={classes.join(' ')}>This is really working!</p>
-          <button style={style}
-            onClick={this.togglePersonsHandler}>Toggle Persons</button>
+          <StyledButton  alt={this.state.showPersons}
+            onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
           {persons}
           <hr />
           <UserInput changed={this.userNameChangedHandler} value={this.state.userName} />
