@@ -1,24 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person';
-import { Component } from 'react'; 
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
 
-import styled from 'styled-components';
-const StyledButton = styled.button` 
-    background-color:${props =>props.alt? 'red': 'green'};
-    color: white;
-    font: inherit;
-    border: 1px solid blue;
-    padding: 8px;
-    cursor: pointer;
-    
-    &:hover {
-      background-color: ${props =>props.alt? 'salmon': 'lightgreen'};
-      color: black;
-    }
-`;
+import './App.css';
+import { Component } from 'react';
+import UserInput from '../components/UserInput/UserInput';
+import UserOutput from '../components/UserOutput/UserOutput';
+import Persons from '../components/Persons/Persons';
+import Cockpit from '../components/cockpit/cockpit';
+
 class App extends Component {
 
   state = {
@@ -91,19 +78,10 @@ class App extends Component {
     let persons = null;
     if (this.state.showPersons) {
       persons = (
-        <div >
-          {this.state.persons.map((person, index) => {
-            return <Person
-              key={person.id}
-              click={() => this.deletePersonsHandler(index)}
-
-              name={person.name}
-              age={person.age}
-              changed={(event) => this.nameChangedHandler(event, person.id)} >
-              {person.hobbies}
-            </Person>
-          })}
-        </div>
+           <Persons persons={this.state.persons}
+            clicked={this.deletePersonsHandler}
+            changed={this.nameChangedHandler}
+          /> 
       );
       style.backgroundColor = 'red';
       style[':hover'] = {
@@ -111,29 +89,23 @@ class App extends Component {
         color: 'black'
       }
     }
-    let classes = []; //['red','bold'].join(' ')
-    if (this.state.persons.length <= 2) {
-      classes.push('red');
-    }
-    if (this.state.persons.length <= 1) {
-      classes.push('bold');
-    }
+
     return (
-      
-        <div className="App">
-          <h1>Hi, I am a React APP</h1>
-          <p className={classes.join(' ')}>This is really working!</p>
-          <StyledButton  alt={this.state.showPersons}
-            onClick={this.togglePersonsHandler}>Toggle Persons</StyledButton>
-          {persons}
-          <hr />
-          <UserInput changed={this.userNameChangedHandler} value={this.state.userName} />
-          <UserOutput userName={this.state.userName} />
 
-          <UserOutput userName="Sammy" />
+      <div className="App">
+        <Cockpit showPersons={this.state.showPersons}
+          persons={this.state.persons} 
+          clicked={this.togglePersonsHandler}
+          />
+        {persons}
+        <hr />
+        <UserInput changed={this.userNameChangedHandler} value={this.state.userName} />
+        <UserOutput userName={this.state.userName} />
 
-          <UserOutput userName="SBoy" />
-        </div> 
+        <UserOutput userName="Sammy" />
+
+        <UserOutput userName="SBoy" />
+      </div>
     );
 
   }
