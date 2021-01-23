@@ -15,3 +15,11 @@ npm install --save radium
 To download styled-components run:
 
 npm install --save styled-components
+
+## The burger builder
+
+
+Run
+```
+create-react-app my-project --use-npm
+```
