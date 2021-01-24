@@ -29,3 +29,8 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ctr + P
 and ext install dsznajder.es7-react-js-snippets
+
+## Prop type validation
+
+also install prop type validation
+npm install --save prop-types
