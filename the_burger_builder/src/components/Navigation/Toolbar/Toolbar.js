@@ -1,0 +1,15 @@
+import React from 'react'
+import Logo from '../../Logo/Logo';
+import classes from './Toolbar.css';
+
+export default function Toolbar(props) {
+    return (
+        <header className={classes.Toolbar}>
+            <div>Menu</div>
+            <Logo/>
+            <nav>
+                ...
+            </nav>
+        </header>
+    )
+}
