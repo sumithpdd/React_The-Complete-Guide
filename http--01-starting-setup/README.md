@@ -1,6 +1,6 @@
 # HTTP request from react
 
-We will use jsonplaceholder.typicode.com <https://jsonplaceholder.typicode.com/>
+We will use jsonplaceholder.typicode.com </>
 
 install axios
 
