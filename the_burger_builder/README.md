@@ -34,3 +34,6 @@ and ext install dsznajder.es7-react-js-snippets
 
 also install prop type validation
 npm install --save prop-types
+
+install axios
+npm install --save axios
